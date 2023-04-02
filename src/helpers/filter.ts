@@ -16,7 +16,7 @@ export const filter = <T>({ entities, filters }: Args<T>): T[] => {
 
     return entities.filter((entity) => {
       return transformedFilters.every(([key, value]) =>
-        (entity[key as keyof typeof entity] as string)
+        (entity[key as keyof typeof entity] as unknown as string)
           .toLowerCase()
           .includes(value.toLowerCase())
       );

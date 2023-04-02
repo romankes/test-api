@@ -17,8 +17,10 @@ export const sort = <T>({ direction, entities, field }: Args<T>) => {
       const { field, direction } = sortData;
 
       newArr.sort((prev, curr) =>
-        ((direction === 'ASC' ? prev : curr)[field] as string).localeCompare(
-          (direction === 'ASC' ? curr : prev)[field] as string
+        (
+          (direction === 'ASC' ? prev : curr)[field] as unknown as string
+        ).localeCompare(
+          (direction === 'ASC' ? curr : prev)[field] as unknown as string
         )
       );
 
