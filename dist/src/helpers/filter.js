@@ -9,9 +9,12 @@ const filter = ({ entities, filters }) => {
             value,
         ]);
         return entities.filter((entity) => {
-            return transformedFilters.every(([key, value]) => entity[key]
-                .toLowerCase()
-                .includes(value.toLowerCase()));
+            return transformedFilters.every(([key, value]) => {
+                var _a, _b;
+                return entity[key]
+                    ? (_b = (_a = entity[key]) === null || _a === void 0 ? void 0 : _a.toLowerCase()) === null || _b === void 0 ? void 0 : _b.includes(value.toLowerCase())
+                    : true;
+            });
         });
     }
     return entities;
